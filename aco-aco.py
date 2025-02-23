@@ -42,7 +42,11 @@ class OtimizacaoColoniaFormigas:
             solucao.append(proxima_cidade)
             visitadas.add(proxima_cidade)
             custo_total += self.matriz_distancias[atual - 1][proxima_cidade - 1]
-        custo_total += self.matriz_distancias[solucao[-1] - 1][solucao[0] - 1]
+        
+        solucao.append(self.primeira_cidade)
+        custo_total += self.matriz_distancias[solucao[-2] - 1][solucao[-1] - 1]
+      
+
         return solucao, custo_total
 
     def obter_probabilidades(self, atual: int, visitadas: set) -> Dict[int, float]:
